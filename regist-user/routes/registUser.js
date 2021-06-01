@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const fs = require("fs");
+const textPath = "./database/user.txt"
 
-const databasePath = 'user.txt'
+
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -13,11 +14,13 @@ router.post('/', function(req, res, next) {
     flag: 'a'
   };
 
-  fs.writeFile(databasePath, data, options, (err) => {
+
+  fs.writeFile(textPath, data, options, (err) => {
     if(err) console.log(err);
     else console.log('write end');
   });
-  
+
+
   res.render('registUser', { 
     title: 'ユーザー作成完了',
     name: name,
